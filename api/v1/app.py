@@ -24,6 +24,8 @@ def status():
 
 @app.errorhandler(404)
 def not_found(error):
+    """ Handles 404 errors by returning a JSON-formatted 404 status code response.
+    """
     return jsonify({'error': 'Not found'}), 404
 
 
