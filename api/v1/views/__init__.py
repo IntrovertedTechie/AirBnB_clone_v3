@@ -1,10 +1,10 @@
-#!/usr/bin/python3
-"""
-This module instantiates a Flask Blueprint object named app_views
-"""
+from flask import Flask
+from api.v1.views import app_views
 
-from flask import Blueprint
+app = Flask(__name__)
 
-app_views = Blueprint('app_views', __name__, url_prefix='/api/v1')
+# Register the app_views blueprint with a trailing slash in the URL prefix
+app.register_blueprint(app_views, url_prefix='/api/v1/')
 
-from api.v1.views.index import *
+if __name__ == '__main__':
+    app.run()
