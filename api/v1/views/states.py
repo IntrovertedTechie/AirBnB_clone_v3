@@ -7,11 +7,15 @@ from flask import abort, jsonify, request
 from models import storage
 from models.state import State
 from api.v1.views import app_views
+from datetime import datetime
+import uuid
 
 
 @app_views.route('/states', methods=['GET'])
 def get_states():
-    """Retrieves the list of all State objects"""
+    """
+    Retrieves the list of all State objects
+    """
     states = [state.to_dict() for state in storage.all(State).values()]
     return jsonify(states)
 
