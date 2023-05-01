@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module creates a Flask app for the RESTful API
+This module Flask app for the RESTful API
 """
 from flask_cors import CORS
 from flask import Flask, jsonify
