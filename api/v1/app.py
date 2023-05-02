@@ -2,17 +2,18 @@
 """
 This module Flask app for the RESTful API
 """
-from flask_cors import CORS
 from flask import Flask, jsonify
 from api.v1.views import app_views
 from models import storage
 import os
+from flask_cors import CORS
+
+
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views, url_prefix='/api/v1')
 
-
+cors = CORS(app, resources={r"/api/*": {"origin": "0.0.0.0"}})
 
 @app.teardown_appcontext
 def teardown_app(exception):
@@ -30,6 +31,7 @@ def not_found(error):
     """ Handles 404 errors by returning a JSON-formatted 404 status code response.
     """
     return jsonify({'error': 'Not found'}), 404
+
 
 
 if __name__ == "__main__":

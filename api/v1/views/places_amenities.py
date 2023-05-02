@@ -18,15 +18,6 @@ def get_place_amenities(place_id):
     return jsonify(amenities)
 
 
-@app_views.route('/places/<place_id>/amenities', methods=['GET'], strict_slashes=False)
-def list_amenities(place_id):
-    """Retrieves the list of all Amenity objects of a Place"""
-    place = storage.get(Place, place_id)
-    if not place:
-        abort(404)
-    amenities = [amenity.to_dict() for amenity in place.amenities]
-    return jsonify(amenities)
-
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['DELETE'], strict_slashes=False)
 def delete_place_amenity(place_id, amenity_id):
